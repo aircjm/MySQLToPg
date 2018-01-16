@@ -26,13 +26,25 @@ public class BuildCode
 		prostrb.append("-- ----------------------------\r\n");
 		prostrb.append("-- Table structure for ");
 		prostrb.append(zt.getTableName());
-		prostrb.append("\r\n-- ");
-		prostrb.append("-- ");
+		prostrb.append("\r\n-- -- ");
 		prostrb.append(df.format(new Date()));
-		prostrb.append("\r\n-- ----------------------------\r\n");
+		prostrb.append("\r\n-- -- ");
+		prostrb.append(zt.getTableComment());
+		prostrb.append("\r\n-- ----------------------------\r\n\r\n");
+		for (myfield mf : zt.getFields())
+		{
+			if (mf.getFieldAutoInc()) {
+				prostrb.append("CREATE SEQUENCE ");
+				prostrb.append(zt.getTableName());
+				prostrb.append("_");
+				prostrb.append(mf.getFieldName());
+				prostrb.append("_seq\r\n");
+				prostrb.append("    INCREMENT 1\r\n    START 1\r\n    MINVALUE 1\r\n    MAXVALUE 9223372036854775807\r\n    CACHE 1;\r\n\r\n");
+			}
+		}
 		prostrb.append("-- DROP TABLE IF EXISTS \"");
 		prostrb.append(zt.getTableName());
-		prostrb.append("\";\r\nCREATE TABLE \"");
+		prostrb.append("\";\r\n\r\nCREATE TABLE \"");
 		prostrb.append(zt.getTableName());
 		prostrb.append("\"(");
 		for (myfield mf : zt.getFields())
@@ -57,6 +69,12 @@ public class BuildCode
 			if (StringUtils.isNotBlank(mf.getFieldDefVal())) {
 				prostrb.append(" DEFAULT ");
 				prostrb.append(mf.getFieldDefVal());
+			} else if (mf.getFieldAutoInc()) {
+				prostrb.append(" DEFAULT nextval('");
+				prostrb.append(zt.getTableName());
+				prostrb.append("_");
+				prostrb.append(mf.getFieldName());
+				prostrb.append("_seq'::regclass)");
 			}
 			prostrb.append(",");
 		}
@@ -74,12 +92,12 @@ public class BuildCode
 		} else {
 			prostrb.deleteCharAt(prostrb.length() - 1);
 		}
-		prostrb.append("\r\n)\r\nWITH (\r\n    OIDS = FALSE\r\n)\r\n;\r\n");
+		prostrb.append("\r\n)\r\nWITH (\r\n    OIDS = FALSE\r\n)\r\n;\r\n\r\n");
 		prostrb.append("COMMENT ON TABLE \"");
 		prostrb.append(zt.getTableName());
 		prostrb.append("\" IS '");
 		prostrb.append(zt.getTableComment());
-		prostrb.append("';\r\n");
+		prostrb.append("';\r\n\r\n");
 		for (myfield mf : zt.getFields())
 		{
 			prostrb.append("COMMENT ON COLUMN \"");

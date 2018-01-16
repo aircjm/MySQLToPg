@@ -189,7 +189,6 @@ public class App {
 				TableCon = zm.group(0).trim();
 				myfield zf = new myfield();
 				zf.setFieldName(zm.group(1).trim());
-				zf.setFDBType(zm.group(2).trim().toLowerCase());
 				Integer len = null;
 				try {
 					String strlen = zm.group(3).trim().replace("(", "").replace(")", "");
@@ -199,17 +198,15 @@ public class App {
 				zf.setFieldLength(len);
 				zf.setFieldComment(zm.group(5).trim());
 				String gr4 = zm.group(4);
-				if (gr4.matches(".*NOT\\s*NULL.*")) {
-					zf.setFieldNotNull(true);
-				} else {
-					zf.setFieldNotNull(false);
-				}
+				zf.setFieldNotNull(gr4.matches(".*NOT\\s*NULL.*"));
+				zf.setFieldAutoInc(gr4.matches(".*AUTO_INCREMENT.*"));
 				Matcher z4 = Pattern
 						.compile("DEFAULT\\s+([^\\s]+)\\s+", Pattern.CASE_INSENSITIVE)
 						.matcher(gr4);
 				if (z4.find()) {
 					zf.setFieldDefVal(z4.group(1));
 				}
+				zf.setFDBType(zm.group(2).trim().toLowerCase());
 				boolean ispri = false;
 				for (String pstr : prilist) {
 					if (pstr.equals(zf.getFieldName())) {
