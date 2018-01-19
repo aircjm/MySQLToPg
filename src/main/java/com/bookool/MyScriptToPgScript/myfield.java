@@ -272,7 +272,7 @@ public class myfield {
 			}
 			break;
 		case "bit":
-			this.PgFDBType = "bit";
+			this.PgFDBType = "boolean";
 			this.FJDBCType = "BIT";
 			this.FModleType = "Boolean";
 			this.FModleTypeFull = "java.lang.Boolean";
