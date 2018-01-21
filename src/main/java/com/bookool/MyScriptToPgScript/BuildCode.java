@@ -24,6 +24,7 @@ public class BuildCode
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
 		prostrb = new StringBuilder("\r\n");
 		prostrb.append("-- ----------------------------\r\n");
+		prostrb.append("-- https://gitee.com/tommygun/MyScriptToPgScript\r\n");
 		prostrb.append("-- Table structure for ");
 		prostrb.append(zt.getTableName());
 		prostrb.append("\r\n-- -- ");
