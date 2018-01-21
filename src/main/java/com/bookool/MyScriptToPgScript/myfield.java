@@ -344,7 +344,7 @@ public class myfield {
 			this.FModleTypeFull = "java.lang.String";
 			this.FieldCollate = "default";
 			if (this.FieldDefVal != null) {
-				this.FieldDefVal = this.FieldDefVal + "::" + this.PgFDBType;
+				this.FieldDefVal = this.FieldDefVal + "::bpchar";
 			}
 			break;
 		case "varchar":
@@ -354,7 +354,7 @@ public class myfield {
 			this.FModleTypeFull = "java.lang.String";
 			this.FieldCollate = "default";
 			if (this.FieldDefVal != null) {
-				this.FieldDefVal = this.FieldDefVal + "::" + this.PgFDBType;
+				this.FieldDefVal = this.FieldDefVal + "::character varying";
 			}
 			break;
 		case "date":
@@ -409,7 +409,7 @@ public class myfield {
 			this.FieldCollate = "default";
 			this.FieldLength = null;
 			if (this.FieldDefVal != null) {
-				this.FieldDefVal = this.FieldDefVal + "::" + this.PgFDBType;
+				this.FieldDefVal = this.FieldDefVal + "::character varying";
 			}
 			break;
 		case "tinyblob":
@@ -464,7 +464,7 @@ public class myfield {
 			this.FieldCollate = "default";
 			this.FieldLength = null;
 			if (this.FieldDefVal != null) {
-				this.FieldDefVal = this.FieldDefVal + "::" + this.PgFDBType;
+				this.FieldDefVal = this.FieldDefVal + "::character varying";
 			}
 			break;
 		case "mediumtext":
@@ -475,7 +475,7 @@ public class myfield {
 			this.FieldCollate = "default";
 			this.FieldLength = null;
 			if (this.FieldDefVal != null) {
-				this.FieldDefVal = this.FieldDefVal + "::" + this.PgFDBType;
+				this.FieldDefVal = this.FieldDefVal + "::character varying";
 			}
 			break;
 		case "longtext":
@@ -486,7 +486,7 @@ public class myfield {
 			this.FieldCollate = "default";
 			this.FieldLength = null;
 			if (this.FieldDefVal != null) {
-				this.FieldDefVal = this.FieldDefVal + "::" + this.PgFDBType;
+				this.FieldDefVal = this.FieldDefVal + "::character varying";
 			}
 			break;
 		default:

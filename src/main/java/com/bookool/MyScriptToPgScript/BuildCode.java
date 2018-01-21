@@ -34,11 +34,11 @@ public class BuildCode
 		for (myfield mf : zt.getFields())
 		{
 			if (mf.getFieldAutoInc()) {
-				prostrb.append("CREATE SEQUENCE ");
+				prostrb.append("CREATE SEQUENCE \"");
 				prostrb.append(zt.getTableName());
 				prostrb.append("_");
 				prostrb.append(mf.getFieldName());
-				prostrb.append("_seq\r\n");
+				prostrb.append("_seq\"\r\n");
 				prostrb.append("    INCREMENT 1\r\n    START 1\r\n    MINVALUE 1\r\n    MAXVALUE 9223372036854775807\r\n    CACHE 1;\r\n\r\n");
 			}
 		}
@@ -70,11 +70,11 @@ public class BuildCode
 				prostrb.append(" DEFAULT ");
 				prostrb.append(mf.getFieldDefVal());
 			} else if (mf.getFieldAutoInc()) {
-				prostrb.append(" DEFAULT nextval('");
+				prostrb.append(" DEFAULT nextval('\"");
 				prostrb.append(zt.getTableName());
 				prostrb.append("_");
 				prostrb.append(mf.getFieldName());
-				prostrb.append("_seq'::regclass)");
+				prostrb.append("_seq\"'::regclass)");
 			}
 			prostrb.append(",");
 		}
