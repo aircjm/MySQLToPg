@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Config>
+    <!-- MySQL数据表脚本文件所在目录 -->
+    <Script_MySQL ConType="dir">mysql</Script_MySQL>
+    <!-- 生成的PgSQL数据表脚本文件所在目录 -->
+    <Script_PostgreSQL ConType="dir">pg</Script_PostgreSQL>
+</Config>

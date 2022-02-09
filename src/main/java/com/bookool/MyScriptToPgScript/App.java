@@ -142,7 +142,7 @@ public class App {
 						e.printStackTrace();
 						AppLog.WriteLog("发生错误：" + e.getMessage(), true);
 					}
-				} catch (FileNotFoundException | UnsupportedEncodingException e) {
+				} catch (Exception e) {
 					// TODO 自动生成的 catch 块
 					e.printStackTrace();
 					AppLog.WriteLog("发生错误：" + e.getMessage(), true);
